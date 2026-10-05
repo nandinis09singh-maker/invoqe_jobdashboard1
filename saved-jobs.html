@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Saved Jobs · CareerFlow</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Arial, sans-serif;
+      background: #f7f8fc;
+      color: #0b0f1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* HEADER */
+    header {
+      height: 76px;
+      background: #ffffff;
+      border-bottom: 1px solid #e4e6ed;
+      display: flex;
+      align-items: center;
+      padding: 0 64px;
+      flex-shrink: 0;
+    }
+
+    .header-container {
+      width: 100%;
+      max-width: 1550px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #4b35e7;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      font-weight: 700;
+      box-shadow: 0 5px 12px rgba(75, 53, 231, 0.18);
+    }
+
+    /* NAVIGATION */
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+      margin-left: 45px;
+      margin-right: auto;
+    }
+
+    .nav a {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      color: #343b50;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .nav a:hover {
+      color: #4338ea;
+    }
+
+    .nav a.active {
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 20px;
+      height: 3px;
+      background: #4338ea;
+      border-radius: 10px;
+    }
+
+    /* AUTH LINKS + PROFILE */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .auth-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .auth-signin {
+      font-size: 15px;
+      font-weight: 600;
+      color: #343b50;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    .auth-signin:hover {
+      color: #4338ea;
+    }
+
+    .auth-signup {
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+      background: #4936e8;
+      padding: 9px 16px;
+      border-radius: 9px;
+      transition: background 0.2s ease;
+    }
+
+    .auth-signup:hover {
+      background: #3929c9;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+    }
+
+    .profile-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #111827;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* MAIN */
+    main {
+      width: 100%;
+      max-width: 1550px;
+      margin: 0 auto;
+      padding: 48px 64px 90px;
+      flex: 1;
+    }
+
+    .page-header {
+      margin-bottom: 38px;
+    }
+
+    .page-header h1 {
+      font-size: 38px;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+
+    .page-header p {
+      color: #596078;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .jobs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* JOB CARD */
+    .job-card {
+      width: 100%;
+      min-height: 154px;
+      background: #ffffff;
+      border: 1px solid #e1e4eb;
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .job-card:hover {
+      transform: translateY(-2px);
+      border-color: #d4d7e3;
+      box-shadow: 0 10px 25px rgba(20, 25, 45, 0.07);
+    }
+
+    .job-info {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .company-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .zenpay { background: #4338ea; }
+    .metro { background: #c65b00; }
+    .cred { background: #4338ea; }
+
+    .job-details {
+      padding-top: 2px;
+    }
+
+    .job-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 5px;
+    }
+
+    .company-details {
+      font-size: 16px;
+      color: #586079;
+      margin-bottom: 11px;
+    }
+
+    .separator {
+      margin: 0 4px;
+    }
+
+    .closing-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: #fff3e4;
+      color: #c65b00;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .clock {
+      font-size: 12px;
+    }
+
+    /* APPLY BUTTON (now a link) */
+    .apply-button {
+      min-width: 188px;
+      height: 43px;
+      border: none;
+      border-radius: 9px;
+      background: #4936e8;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 0 25px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .apply-button:hover {
+      background: #3929c9;
+      box-shadow: 0 7px 18px rgba(73, 54, 232, 0.22);
+      transform: translateY(-1px);
+    }
+
+    .apply-button:active {
+      transform: translateY(0);
+    }
+
+    /* WORDMARK BANNER */
+    #wordmark {
+      width: 100%;
+      height: 220px;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      height: 92px;
+      background: #080c15;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 0 64px;
+      flex-shrink: 0;
+    }
+
+    .footer-container {
+      width: 100%;
+      max-width: 1550px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 700;
+    }
+
+    .footer-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      background: #4936e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-text {
+      color: #9da3b5;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      header { padding: 0 25px; }
+      main { padding: 40px 25px 70px; }
+      .nav { gap: 20px; margin-left: 25px; }
+      .job-card { padding: 22px; }
+      .apply-button { min-width: 150px; }
+    }
+
+    @media (max-width: 700px) {
+      header { height: 68px; }
+      .nav { display: none; }
+      main { padding: 35px 18px 60px; }
+      .page-header h1 { font-size: 32px; }
+      .page-header p { font-size: 16px; }
+
+      .job-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 22px;
+      }
+
+      .job-info { gap: 15px; }
+      .apply-button { width: 100%; }
+      #wordmark { height: 160px; }
+      footer { padding: 0 20px; }
+      .footer-text { display: none; }
+    }
+
+    @media (max-width: 450px) {
+      .logo { font-size: 19px; }
+      .logo-icon { width: 34px; height: 34px; }
+      .auth-signin { display: none; }
+      .auth-signup { padding: 8px 12px; font-size: 14px; }
+      .page-header h1 { font-size: 29px; }
+
+      .company-logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+      }
+
+      .job-title { font-size: 18px; }
+      .company-details { font-size: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&gt;_</div>
+        CareerFlow
+      </a>
+
+      <nav class="nav">
+        <a href="index.html">Find jobs</a>
+        <a href="saved-jobs.html" class="active">Saved jobs</a>
+        <a href="applications.html">Applications</a>
+        <a href="career-resources.html">Career resources</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="auth-links">
+          <a href="login.html" class="auth-signin">Sign in</a>
+          <a href="signup.html" class="auth-signup">Sign up</a>
+        </div>
+
+        <a href="profile.html" class="profile">
+          <div class="profile-circle" data-user-avatar>NS</div>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <section class="page-header">
+      <h1>Saved jobs</h1>
+      <p>9 roles you've bookmarked to revisit — 2 close soon.</p>
+    </section>
+
+    <section class="jobs-list">
+
+      <!-- JOB 1 -->
+      <article class="job-card">
+        <div class="job-info">
+          <div class="company-logo zenpay">ZP</div>
+          <div class="job-details">
+            <div class="job-title">Graduate Product Designer</div>
+            <div class="company-details">
+              ZenPay <span class="separator">·</span> Bengaluru <span class="separator">·</span> Hybrid
+            </div>
+            <div class="closing-badge">
+              <span class="clock">◷</span> Closes in 2 days
+            </div>
+          </div>
+        </div>
+        <a href="job-detail.html" class="apply-button">Apply now ↗</a>
+      </article>
+
+      <!-- JOB 2 -->
+      <article class="job-card">
+        <div class="job-info">
+          <div class="company-logo metro">MK</div>
+          <div class="job-details">
+            <div class="job-title">Graduate UX Researcher</div>
+            <div class="company-details">
+              MetroKart <span class="separator">·</span> Mumbai <span class="separator">·</span> Hybrid
+            </div>
+            <div class="closing-badge">
+              <span class="clock">◷</span> Closes in 5 days
+            </div>
+          </div>
+        </div>
+        <a href="job-detail.html" class="apply-button">Apply now ↗</a>
+      </article>
+
+      <!-- JOB 3 -->
+      <article class="job-card">
+        <div class="job-info">
+          <div class="company-logo cred">CR</div>
+          <div class="job-details">
+            <div class="job-title">Product Engineer</div>
+            <div class="company-details">
+              CRED <span class="separator">·</span> Bengaluru <span class="separator">·</span> Hybrid
+            </div>
+          </div>
+        </div>
+        <a href="job-detail.html" class="apply-button">Apply now ↗</a>
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- WORDMARK BANNER -->
+  <div id="wordmark" aria-hidden="true"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <div class="footer-icon">C</div>
+        CareerFlow
+      </div>
+      <div class="footer-text">
+        © 2026 CareerFlow, Inc. · Privacy · Terms · Accessibility
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vector-wordmark.js"></script>
+  <script>
+    if (window.VectorWordmark) {
+      VectorWordmark(document.getElementById("wordmark"), {
+        text: "CAREERFLOW",
+        fontSize: 120,
+        labels: false
+      });
+    }
+  </script>
+
+  <script src="js/auth.js"></script>
+  <script src="js/motion.js"></script>
+</body>
+</html>
+
+  

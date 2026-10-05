@@ -1,0 +1,91 @@
+/* CareerFlow — shared styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --brand-600: #4338ea;
+  --brand-700: #3527c9;
+  --ink-900: #0b0f1a;
+  --ink-800: #0f172a;
+}
+
+* { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif; }
+
+html { scroll-behavior: smooth; }
+
+body { background: #f7f8fb; }
+
+.brand-gradient {
+  background: linear-gradient(135deg, var(--brand-600), #6d28d9);
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e7e9f0;
+  border-radius: 14px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #f1f2f8;
+  color: #4b5069;
+}
+
+.btn-primary {
+  background: var(--brand-600);
+  color: #fff;
+  transition: background .15s ease, transform .1s ease;
+}
+.btn-primary:hover { background: var(--brand-700); }
+.btn-primary:active { transform: scale(.98); }
+
+.btn-secondary {
+  background: #fff;
+  border: 1px solid #dfe1ea;
+  color: #1c2033;
+  transition: background .15s ease;
+}
+.btn-secondary:hover { background: #f5f6fa; }
+
+.nav-link {
+  color: #4b5069;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 6px;
+}
+.nav-link.active {
+  color: var(--ink-900);
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: var(--brand-600);
+  border-radius: 2px;
+}
+
+.job-card { transition: box-shadow .15s ease, border-color .15s ease; }
+.job-card:hover { box-shadow: 0 6px 20px rgba(20, 20, 43, .06); border-color: #d7d9ea; }
+
+.avatar {
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; color: #fff; border-radius: 12px;
+  letter-spacing: .02em;
+}
+
+input[type="checkbox"] { accent-color: var(--brand-600); }
+
+::selection { background: #ded9ff; }
+
+.skip-link:focus {
+  position: fixed; top: 8px; left: 8px; z-index: 100;
+  background: #fff; padding: 8px 14px; border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}

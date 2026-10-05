@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerFlow - Applications</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f8fc;
+            color: #111827;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            height: 100px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            padding: 0 78px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: 45px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: #5536e8;
+            color: white;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 38px;
+            height: 100%;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            font-size: 17px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: "";
+            position: absolute;
+            bottom: 21px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #4935ee;
+        }
+
+        .profile {
+            margin-left: auto;
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            background: #111827;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* MAIN */
+        .container {
+            padding: 31px 79px;
+        }
+
+        .heading h1 {
+            font-size: 38px;
+            margin-bottom: 9px;
+            font-weight: 750;
+        }
+
+        .heading p {
+            font-size: 20px;
+            color: #52627a;
+        }
+
+        /* STAT CARDS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 19px;
+            margin-top: 42px;
+        }
+
+        .stat-card {
+            height: 102px;
+            background: white;
+            border: 1px solid #e1e5ed;
+            border-radius: 17px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-number {
+            font-size: 31px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 17px;
+            color: #52627a;
+        }
+
+        .purple {
+            color: #5137ed;
+        }
+
+        .green {
+            color: #159447;
+        }
+
+        /* APPLICATION LIST */
+        .applications {
+            margin-top: 39px;
+            background: white;
+            border: 1px solid #e1e5ed;
+            border-radius: 17px;
+            overflow: hidden;
+        }
+
+        .application {
+            min-height: 101px;
+            display: flex;
+            align-items: center;
+            padding: 0 23px;
+            border-bottom: 1px solid #e1e5ed;
+        }
+
+        .application:last-child {
+            border-bottom: none;
+        }
+
+        .company-icon {
+            width: 49px;
+            height: 49px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .nl {
+            background: #4c35eb;
+        }
+
+        .at {
+            background: #13a64d;
+        }
+
+        .me {
+            background: #7835e8;
+        }
+
+        .mk {
+            background: #c45c09;
+        }
+
+        .fn {
+            background: #ed2024;
+        }
+
+        .job-info h2 {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .job-info p {
+            color: #536580;
+            font-size: 17px;
+        }
+
+        .status {
+            margin-left: auto;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .interview {
+            color: #6838e8;
+            background: #f0e9ff;
+        }
+
+        .review {
+            color: #4935e9;
+            background: #eef0ff;
+        }
+
+        .offer {
+            color: #079447;
+            background: #e1f7eb;
+        }
+
+        .rejected {
+            color: #e82424;
+            background: #ffe2e2;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 0 25px;
+            }
+
+            .container {
+                padding: 30px 25px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .brand {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .heading h1 {
+                font-size: 30px;
+            }
+
+            .application {
+                padding: 15px;
+            }
+
+            .status {
+                font-size: 12px;
+                padding: 6px 9px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+
+        <div class="logo-section">
+            <div class="logo">›_</div>
+            <div class="brand">CareerFlow</div>
+        </div>
+
+        <div class="nav-links">
+            <a href="#">Find jobs</a>
+            <a href="#">Saved jobs</a>
+            <a href="#" class="active">Applications</a>
+            <a href="#">Career resources</a>
+        </div>
+
+        <div class="profile">AM</div>
+
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <div class="heading">
+            <h1>Applications</h1>
+            <p>Track where every application stands, from submitted to offer.</p>
+        </div>
+
+
+        <!-- STATISTICS -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Total</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number purple">2</div>
+                <div class="stat-label">In review</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number purple">1</div>
+                <div class="stat-label">Interview</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number green">1</div>
+                <div class="stat-label">Offer</div>
+            </div>
+
+        </section>
+
+
+        <!-- APPLICATIONS -->
+        <section class="applications">
+
+            <!-- Product Designer -->
+            <div class="application">
+
+                <div class="company-icon nl">
+                    NL
+                </div>
+
+                <div class="job-info">
+                    <h2>Product Designer</h2>
+                    <p>Northstar Labs · Bengaluru</p>
+                </div>
+
+                <div class="status interview">
+                    Interview · 29 Sep
+                </div>
+
+            </div>
+
+
+            <!-- Atlassian -->
+            <div class="application">
+
+                <div class="company-icon at">
+                    AT
+                </div>
+
+                <div class="job-info">
+                    <h2>Graduate Software Engineer</h2>
+                    <p>Atlassian · Bengaluru</p>
+                </div>
+
+                <div class="status review">
+                    In review
+                </div>
+
+            </div>
+
+
+            <!-- Meesho -->
+            <div class="application">
+
+                <div class="company-icon me">
+                    ME
+                </div>
+
+                <div class="job-info">
+                    <h2>Frontend Engineer I</h2>
+                    <p>Meesho · Bengaluru</p>
+                </div>
+
+                <div class="status review">
+                    In review
+                </div>
+
+            </div>
+
+
+            <!-- MetroKart -->
+            <div class="application">
+
+                <div class="company-icon mk">
+                    MK
+                </div>
+
+                <div class="job-info">
+                    <h2>Graduate UX Researcher</h2>
+                    <p>MetroKart · Mumbai</p>
+                </div>
+
+                <div class="status offer">
+                    Offer
+                </div>
+
+            </div>
+
+
+            <!-- FinNext -->
+            <div class="application">
+
+                <div class="company-icon fn">
+                    FN
+                </div>
+
+                <div class="job-info">
+                    <h2>Associate Engineer</h2>
+                    <p>FinNext · Pune</p>
+                </div>
+
+                <div class="status rejected">
+                    Not selected
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

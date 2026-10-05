@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CareerFlow - Applications</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background: #f7f8fc;
+            color: #111827;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        select {
+            font-family: inherit;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 72px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            padding: 0 6%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: 45px;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #4338ea, #7c3aed);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            height: 100%;
+        }
+
+        .nav-links a {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: #475569;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4338ea;
+        }
+
+        .nav-links a.active {
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .nav-links a.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #4338ea;
+            border-radius: 3px 3px 0 0;
+        }
+
+        /* USER */
+
+        .user-chip {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .profile {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #111827;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* MOBILE BUTTON */
+
+        .menu-button {
+            display: none;
+            border: 0;
+            background: transparent;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* MOBILE NAV */
+
+        .mobile-nav {
+            display: none;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 15px 6%;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            padding: 12px;
+            border-radius: 8px;
+            color: #475569;
+            font-size: 14px;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            background: #f1f0ff;
+            color: #4338ea;
+            font-weight: 600;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            width: min(1180px, 88%);
+            margin: 0 auto;
+            padding: 42px 0 70px;
+        }
+
+        .heading h1 {
+            font-size: 36px;
+            line-height: 1.15;
+            margin-bottom: 9px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .heading p {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 32px;
+        }
+
+        .stat-card {
+            min-height: 105px;
+            background: white;
+            border: 1px solid #e1e5ed;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .purple {
+            color: #5137ed;
+        }
+
+        .green {
+            color: #159447;
+        }
+
+        .red {
+            color: #e82424;
+        }
+
+        /* ================= TOOLBAR ================= */
+
+        .toolbar {
+            margin-top: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .toolbar h2 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-select {
+            border: 1px solid #dfe3eb;
+            background: white;
+            border-radius: 9px;
+            padding: 9px 12px;
+            color: #334155;
+            font-size: 13px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .filter-select:focus {
+            border-color: #4338ea;
+        }
+
+        /* ================= APPLICATION LIST ================= */
+
+        .applications {
+            margin-top: 15px;
+            background: white;
+            border: 1px solid #e1e5ed;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .application {
+            min-height: 96px;
+            display: flex;
+            align-items: center;
+            padding: 18px 22px;
+            border-bottom: 1px solid #e9ebf0;
+            transition: background 0.2s ease;
+        }
+
+        .application:last-child {
+            border-bottom: none;
+        }
+
+        .application:hover {
+            background: #fafaff;
+        }
+
+        .company-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 13px;
+            font-weight: 800;
+            margin-right: 15px;
+        }
+
+        .nl {
+            background: #4c35eb;
+        }
+
+        .at {
+            background: #13a64d;
+        }
+
+        .me {
+            background: #7835e8;
+        }
+
+        .mk {
+            background: #c45c09;
+        }
+
+        .fn {
+            background: #ed2024;
+        }
+
+        .job-info {
+            min-width: 0;
+        }
+
+        .job-info h2 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .job-info p {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .status {
+            margin-left: auto;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .interview {
+            color: #6838e8;
+            background: #f0e9ff;
+        }
+
+        .review {
+            color: #4935e9;
+            background: #eef0ff;
+        }
+
+        .offer {
+            color: #079447;
+            background: #e1f7eb;
+        }
+
+        .rejected {
+            color: #e82424;
+            background: #ffe2e2;
+        }
+
+        /* ================= EMPTY STATE ================= */
+
+        .empty-state {
+            display: none;
+            padding: 55px 20px;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .empty-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .empty-state h3 {
+            color: #111827;
+            margin-bottom: 5px;
+        }
+
+        /* ================= WORDMARK ================= */
+
+        .wordmark {
+            padding: 70px 20px 80px;
+            text-align: center;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .wordmark span {
+            font-size: clamp(55px, 12vw, 145px);
+            line-height: 0.9;
+            font-weight: 800;
+            letter-spacing: -0.07em;
+            color: #111827;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                padding: 0 25px;
+            }
+
+            .container {
+                width: calc(100% - 50px);
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                height: 64px;
+            }
+
+            .brand,
+            .nav-links {
+                display: none;
+            }
+
+            .logo-section {
+                margin-right: 0;
+            }
+
+            .user-chip {
+                margin-left: auto;
+                margin-right: 5px;
+            }
+
+            .user-chip span:last-child {
+                display: none;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .container {
+                width: calc(100% - 32px);
+                padding-top: 30px;
+            }
+
+            .heading h1 {
+                font-size: 30px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .stat-card {
+                min-height: 90px;
+            }
+
+            .toolbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filters {
+                width: 100%;
+            }
+
+            .filter-select {
+                flex: 1;
+            }
+
+            .application {
+                padding: 17px 15px;
+                align-items: flex-start;
+            }
+
+            .company-icon {
+                width: 42px;
+                height: 42px;
+                min-width: 42px;
+                margin-right: 11px;
+            }
+
+            .job-info h2 {
+                font-size: 14px;
+            }
+
+            .job-info p {
+                font-size: 12px;
+            }
+
+            .status {
+                margin-left: 10px;
+                font-size: 10px;
+                padding: 6px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .application {
+                flex-wrap: wrap;
+            }
+
+            .status {
+                margin-left: 53px;
+                margin-top: 10px;
+            }
+
+            .wordmark {
+                padding: 50px 10px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo-section">
+
+            <div class="logo">
+                &gt;_
+            </div>
+
+            <div class="brand">
+                CareerFlow
+            </div>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Find jobs
+            </a>
+
+            <a href="saved-jobs.html">
+                Saved jobs
+            </a>
+
+            <a href="applications.html" class="active">
+                Applications
+            </a>
+
+            <a href="career-resources.html">
+                Career resources
+            </a>
+
+        </div>
+
+
+        <a href="profile.html" class="user-chip">
+
+            <span class="profile" data-user-avatar>
+                AM
+            </span>
+
+            <span data-user-name>
+                Aarav Mehta
+            </span>
+
+        </a>
+
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false">
+
+            ☰
+
+        </button>
+
+    </nav>
+
+
+    <!-- ================= MOBILE NAV ================= -->
+
+    <div class="mobile-nav" id="mobileNav">
+
+        <a href="index.html">
+            Find jobs
+        </a>
+
+        <a href="saved-jobs.html">
+            Saved jobs
+        </a>
+
+        <a href="applications.html" class="active">
+            Applications
+        </a>
+
+        <a href="career-resources.html">
+            Career resources
+        </a>
+
+    </div>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <section class="heading">
+
+            <h1>
+                Applications
+            </h1>
+
+            <p>
+                Track where every application stands, from submitted to offer.
+            </p>
+
+        </section>
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <section class="stats" id="stats">
+
+            <div class="stat-card">
+
+                <div
+                    class="stat-number"
+                    id="totalCount">
+                    5
+                </div>
+
+                <div class="stat-label">
+                    Total
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div
+                    class="stat-number purple"
+                    id="reviewCount">
+                    2
+                </div>
+
+                <div class="stat-label">
+                    In review
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div
+                    class="stat-number purple"
+                    id="interviewCount">
+                    1
+                </div>
+
+                <div class="stat-label">
+                    Interview
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div
+                    class="stat-number green"
+                    id="offerCount">
+                    1
+                </div>
+
+                <div class="stat-label">
+                    Offer
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TOOLBAR ================= -->
+
+        <section class="toolbar">
+
+            <h2>
+                Your applications
+            </h2>
+
+            <div class="filters">
+
+                <select
+                    id="statusFilter"
+                    class="filter-select">
+
+                    <option value="all">
+                        All applications
+                    </option>
+
+                    <option value="review">
+                        In review
+                    </option>
+
+                    <option value="interview">
+                        Interview
+                    </option>
+
+                    <option value="offer">
+                        Offer
+                    </option>
+
+                    <option value="rejected">
+                        Not selected
+                    </option>
+
+                </select>
+
+
+                <select
+                    id="locationFilter"
+                    class="filter-select">
+
+                    <option value="all">
+                        All locations
+                    </option>
+
+                    <option value="Bengaluru">
+                        Bengaluru
+                    </option>
+
+                    <option value="Mumbai">
+                        Mumbai
+                    </option>
+
+                    <option value="Pune">
+                        Pune
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= APPLICATION LIST ================= -->
+
+        <section class="applications" id="applicationsList">
+
+
+            <article
+                class="application"
+                data-status="interview"
+                data-location="Bengaluru">
+
+                <div class="company-icon nl">
+                    NL
+                </div>
+
+                <div class="job-info">
+
+                    <h2>
+                        Product Designer
+                    </h2>
+
+                    <p>
+                        Northstar Labs · Bengaluru
+                    </p>
+
+                </div>
+
+                <div class="status interview">
+                    Interview · 29 Sep
+                </div>
+
+            </article>
+
+
+            <article
+                class="application"
+                data-status="review"
+                data-location="Bengaluru">
+
+                <div class="company-icon at">
+                    AT
+                </div>
+
+                <div class="job-info">
+
+                    <h2>
+                        Graduate Software Engineer
+                    </h2>
+
+                    <p>
+                        Atlassian · Bengaluru
+                    </p>
+
+                </div>
+
+                <div class="status review">
+                    In review
+                </div>
+
+            </article>
+
+
+            <article
+                class="application"
+                data-status="review"
+                data-location="Bengaluru">
+
+                <div class="company-icon me">
+                    ME
+                </div>
+
+                <div class="job-info">
+
+                    <h2>
+                        Frontend Engineer I
+                    </h2>
+
+                    <p>
+                        Meesho · Bengaluru
+                    </p>
+
+                </div>
+
+                <div class="status review">
+                    In review
+                </div>
+
+            </article>
+
+
+            <article
+                class="application"
+                data-status="offer"
+                data-location="Mumbai">
+
+                <div class="company-icon mk">
+                    MK
+                </div>
+
+                <div class="job-info">
+
+                    <h2>
+                        Graduate UX Researcher
+                    </h2>
+
+                    <p>
+                        MetroKart · Mumbai
+                    </p>
+
+                </div>
+
+                <div class="status offer">
+                    Offer
+                </div>
+
+            </article>
+
+
+            <article
+                class="application"
+                data-status="rejected"
+                data-location="Pune">
+
+                <div class="company-icon fn">
+                    FN
+                </div>
+
+                <div class="job-info">
+
+                    <h2>
+                        Associate Engineer
+                    </h2>
+
+                    <p>
+                        FinNext · Pune
+                    </p>
+
+                </div>
+
+                <div class="status rejected">
+                    Not selected
+                </div>
+
+            </article>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                class="empty-state"
+                id="emptyState">
+
+                <div class="empty-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    No applications found
+                </h3>
+
+                <p>
+                    Try changing your filters.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= WORDMARK ================= -->
+
+    <div class="wordmark" aria-hidden="true">
+        <span>CAREERFLOW</span>
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+
+            /* ================= MOBILE MENU ================= */
+
+            const menuButton =
+                document.getElementById("menuButton");
+
+            const mobileNav =
+                document.getElementById("mobileNav");
+
+
+            menuButton.addEventListener("click", function () {
+
+                const open =
+                    mobileNav.classList.toggle("open");
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    open ? "true" : "false"
+                );
+
+            });
+
+
+            /* ================= FILTERS ================= */
+
+            const statusFilter =
+                document.getElementById("statusFilter");
+
+            const locationFilter =
+                document.getElementById("locationFilter");
+
+            const applications =
+                document.querySelectorAll(".application");
+
+            const emptyState =
+                document.getElementById("emptyState");
+
+
+            function filterApplications() {
+
+                const selectedStatus =
+                    statusFilter.value;
+
+                const selectedLocation =
+                    locationFilter.value;
+
+                let visibleCount = 0;
+
+
+                applications.forEach(function (application) {
+
+                    const applicationStatus =
+                        application.dataset.status;
+
+                    const applicationLocation =
+                        application.dataset.location;
+
+
+                    const statusMatches =
+                        selectedStatus === "all" ||
+                        applicationStatus === selectedStatus;
+
+
+                    const locationMatches =
+                        selectedLocation === "all" ||
+                        applicationLocation === selectedLocation;
+
+
+                    if (statusMatches && locationMatches) {
+
+                        application.style.display = "flex";
+
+                        visibleCount++;
+
+                    } else {
+
+                        application.style.display = "none";
+
+                    }
+
+                });
+
+
+                if (visibleCount === 0) {
+
+                    emptyState.style.display = "block";
+
+                } else {
+
+                    emptyState.style.display = "none";
+
+                }
+
+            }
+
+
+            statusFilter.addEventListener(
+                "change",
+                filterApplications
+            );
+
+
+            locationFilter.addEventListener(
+                "change",
+                filterApplications
+            );
+
+
+            /* ================= INITIAL COUNTS ================= */
+
+            const totalCount =
+                document.getElementById("totalCount");
+
+            const reviewCount =
+                document.getElementById("reviewCount");
+
+            const interviewCount =
+                document.getElementById("interviewCount");
+
+            const offerCount =
+                document.getElementById("offerCount");
+
+
+            totalCount.textContent =
+                applications.length;
+
+
+            reviewCount.textContent =
+                document.querySelectorAll(
+                    '.application[data-status="review"]'
+                ).length;
+
+
+            interviewCount.textContent =
+                document.querySelectorAll(
+                    '.application[data-status="interview"]'
+                ).length;
+
+
+            offerCount.textContent =
+                document.querySelectorAll(
+                    '.application[data-status="offer"]'
+                ).length;
+
+
+        });
+
+    </script>
+
+    <!-- Shared account display. This page does not depend on the wordmark/WebGL script. -->
+    <script src="js/auth.js"></script>
+
+  <script src="js/motion.js"></script>
+</body>
+</html>

@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CareerFlow career resources, guides, templates and checklists for fresh graduates.">
+  <title>Career Resources · CareerFlow</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: #ffffff;
+      color: #0b0f1a;
+    }
+
+    .brand-gradient {
+      background: linear-gradient(135deg, #4338ea, #7c3aed);
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e7e9f0;
+      border-radius: 16px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef0fb;
+      color: #4338ea;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .nav-link {
+      color: #3a3f58;
+      padding: 21px 0;
+      border-bottom: 3px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: #0b0f1a;
+    }
+
+    .nav-link.active {
+      color: #0b0f1a;
+      font-weight: 700;
+      border-bottom-color: #4338ea;
+    }
+
+    .chip {
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .chip:hover {
+      border-color: #4338ea;
+      color: #4338ea;
+    }
+
+    .chip.on {
+      background: #4338ea !important;
+      color: #ffffff !important;
+      border-color: #4338ea !important;
+    }
+
+    article[data-guide] {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    article[data-guide]:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(20, 25, 45, 0.09);
+    }
+
+    article[data-guide]:focus {
+      outline: 3px solid rgba(67, 56, 234, 0.2);
+      outline-offset: 2px;
+    }
+
+    #mobile-nav {
+      display: none;
+    }
+
+    #mobile-nav.open {
+      display: flex;
+    }
+
+    #guide-modal {
+      display: none;
+    }
+
+    #guide-modal.open {
+      display: flex;
+    }
+
+    .guide-body h4 {
+      font-weight: 700;
+      color: #0b0f1a;
+      font-size: 15px;
+      margin: 18px 0 7px;
+    }
+
+    .guide-body p {
+      margin-bottom: 10px;
+    }
+
+    .guide-body ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .guide-body ol {
+      list-style: decimal;
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .guide-body li {
+      margin-bottom: 7px;
+    }
+
+    .guide-body .box {
+      background: #f4f5fa;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 12px 0;
+      color: #0b0f1a;
+    }
+
+    .wordmark {
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      font-size: clamp(48px, 13vw, 170px);
+      color: #0b0f1a;
+      text-align: center;
+      padding: 45px 16px 15px;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .check-item {
+      transition: background 0.2s ease;
+    }
+
+    .check-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 767px) {
+      .wordmark {
+        padding-top: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="bg-white border-b border-[#e7e9f0] sticky top-0 z-40">
+
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
+      <div class="flex items-center gap-10 h-full">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 font-bold text-lg">
+          <span class="w-8 h-8 rounded-lg brand-gradient flex items-center justify-center text-white">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M4 17l6-6-4-4M12 19h8"/>
+            </svg>
+          </span>
+          CareerFlow
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8 text-sm h-full">
+
+          <a href="index.html" class="nav-link">
+            Find jobs
+          </a>
+
+          <a href="saved-jobs.html" class="nav-link">
+            Saved jobs
+          </a>
+
+          <a href="applications.html" class="nav-link">
+            Applications
+          </a>
+
+          <a href="career-resources.html"
+             class="nav-link active"
+             aria-current="page">
+            Career resources
+          </a>
+
+        </nav>
+
+      </div>
+
+      <!-- Profile + Mobile Menu -->
+      <div class="flex items-center gap-4">
+
+        <a href="profile.html" class="flex items-center gap-2">
+
+          <span class="w-9 h-9 rounded-full bg-[#0b0f1a] text-white flex items-center justify-center text-xs font-semibold">
+            AM
+          </span>
+
+          <span class="hidden sm:block text-sm text-left">
+            <span class="block font-semibold leading-tight">
+              Aarav Mehta
+            </span>
+
+            <span class="block text-[#16a34a] leading-tight text-xs">
+              Actively looking
+            </span>
+          </span>
+
+        </a>
+
+        <button
+          id="menu-btn"
+          type="button"
+          class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-gray-100"
+          aria-label="Open menu"
+          aria-expanded="false">
+
+          <svg width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav
+      id="mobile-nav"
+      class="border-t border-[#e7e9f0] px-6 py-4 flex-col gap-3 text-sm">
+
+      <a href="index.html" class="py-2">
+        Find jobs
+      </a>
+
+      <a href="saved-jobs.html" class="py-2">
+        Saved jobs
+      </a>
+
+      <a href="applications.html" class="py-2">
+        Applications
+      </a>
+
+      <a href="career-resources.html" class="py-2 font-semibold text-[#4338ea]">
+        Career resources
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- MAIN -->
+  <main class="pb-10">
+
+    <!-- HERO -->
+    <section class="bg-[#f4f5fa] border-b border-[#e7e9f0]">
+
+      <div class="max-w-7xl mx-auto px-6 pt-12 pb-10">
+
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
+          Tools to help you land your first role.
+        </h1>
+
+        <p class="text-[#585d76] max-w-2xl leading-relaxed">
+          Guides, templates and checklists for fresh graduates in India,
+          from your first resume to your first offer letter.
+        </p>
+
+
+        <!-- QUICK LINKS -->
+        <div class="mt-8 grid sm:grid-cols-3 gap-4">
+
+          <a
+            href="resume.html"
+            class="card p-5 flex items-center gap-4 hover:shadow-md transition">
+
+            <span class="w-10 h-10 rounded-xl bg-[#eef0fb] flex items-center justify-center text-lg">
+              📄
+            </span>
+
+            <span>
+              <span class="block font-semibold">
+                Build your resume
+              </span>
+
+              <span class="block text-sm text-[#585d76]">
+                Use our resume builder
+              </span>
+            </span>
+
+          </a>
+
+
+          <a
+            href="profile.html"
+            class="card p-5 flex items-center gap-4 hover:shadow-md transition">
+
+            <span class="w-10 h-10 rounded-xl bg-[#f2ecff] flex items-center justify-center text-lg">
+              👤
+            </span>
+
+            <span>
+              <span class="block font-semibold">
+                Improve your profile
+              </span>
+
+              <span class="block text-sm text-[#585d76]">
+                Get to 100% strength
+              </span>
+            </span>
+
+          </a>
+
+
+          <a
+            href="index.html"
+            class="card p-5 flex items-center gap-4 hover:shadow-md transition">
+
+            <span class="w-10 h-10 rounded-xl bg-[#e6f7ee] flex items-center justify-center text-lg">
+              🔍
+            </span>
+
+            <span>
+              <span class="block font-semibold">
+                Find graduate jobs
+              </span>
+
+              <span class="block text-sm text-[#585d76]">
+                Browse open roles
+              </span>
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- GUIDES -->
+    <section class="max-w-7xl mx-auto px-6 py-10">
+
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+
+        <h2 class="text-xl font-bold">
+          Guides &amp; templates
+        </h2>
+
+
+        <!-- FILTERS -->
+        <div class="flex flex-wrap gap-2 text-sm" id="chips">
+
+          <button
+            type="button"
+            data-cat="all"
+            class="chip on rounded-full px-4 py-1.5 font-medium bg-white border border-[#e7e9f0]">
+            All
+          </button>
+
+          <button
+            type="button"
+            data-cat="resume"
+            class="chip rounded-full px-4 py-1.5 font-medium bg-white border border-[#e7e9f0]">
+            Resume
+          </button>
+
+          <button
+            type="button"
+            data-cat="interview"
+            class="chip rounded-full px-4 py-1.5 font-medium bg-white border border-[#e7e9f0]">
+            Interviews
+          </button>
+
+          <button
+            type="button"
+            data-cat="skills"
+            class="chip rounded-full px-4 py-1.5 font-medium bg-white border border-[#e7e9f0]">
+            Skills
+          </button>
+
+          <button
+            type="button"
+            data-cat="offer"
+            class="chip rounded-full px-4 py-1.5 font-medium bg-white border border-[#e7e9f0]">
+            Offers
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- CARDS GENERATED BY JAVASCRIPT -->
+      <div
+        class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+        id="resource-grid">
+      </div>
+
+    </section>
+
+
+    <!-- CHECKLIST -->
+    <section class="max-w-7xl mx-auto px-6 pb-8">
+
+      <div
+        class="rounded-2xl p-8 text-white"
+        style="background:linear-gradient(160deg,#0b0f1a,#181c30)">
+
+        <h2 class="text-2xl font-bold mb-5">
+          Tick these off before you apply.
+        </h2>
+
+        <div class="grid sm:grid-cols-2 gap-3 text-sm">
+
+          <label class="check-item flex items-center gap-3 bg-white/5 rounded-xl p-4 cursor-pointer">
+            <input type="checkbox" class="accent-indigo-600 w-4 h-4">
+            Resume is one page and proofread
+          </label>
+
+          <label class="check-item flex items-center gap-3 bg-white/5 rounded-xl p-4 cursor-pointer">
+            <input type="checkbox" class="accent-indigo-600 w-4 h-4">
+            Profile strength above 80%
+          </label>
+
+          <label class="check-item flex items-center gap-3 bg-white/5 rounded-xl p-4 cursor-pointer">
+            <input type="checkbox" class="accent-indigo-600 w-4 h-4">
+            LinkedIn matches your resume
+          </label>
+
+          <label class="check-item flex items-center gap-3 bg-white/5 rounded-xl p-4 cursor-pointer">
+            <input type="checkbox" class="accent-indigo-600 w-4 h-4">
+            3 projects ready to discuss
+          </label>
+
+          <label class="check-item flex items-center gap-3 bg-white/5 rounded-xl p-4 cursor-pointer">
+            <input type="checkbox" class="accent-indigo-600 w-4 h-4">
+            Practised 5 common interview answers
+          </label>
+
+          <label class="check-item flex items-center gap-3 bg-white/5 rounded-xl p-4 cursor-pointer">
+            <input type="checkbox" class="accent-indigo-600 w-4 h-4">
+            Preferred cities and salary range decided
+          </label>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- GUIDE MODAL -->
+  <div
+    id="guide-modal"
+    class="fixed inset-0 z-50 items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="guide-title">
+
+    <!-- Overlay -->
+    <div
+      data-close
+      class="absolute inset-0 bg-black/60">
+    </div>
+
+
+    <!-- Modal -->
+    <div
+      class="relative bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8">
+
+      <button
+        id="close-x"
+        data-close
+        type="button"
+        aria-label="Close"
+        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#f1f2f8] flex items-center justify-center text-lg hover:bg-gray-200">
+
+        ✕
+
+      </button>
+
+
+      <span
+        id="guide-tag"
+        class="tag mb-3">
+      </span>
+
+
+      <h2
+        id="guide-title"
+        class="text-2xl font-extrabold mb-1 pr-10">
+      </h2>
+
+
+      <p
+        id="guide-meta"
+        class="text-sm text-[#8a8fa8] mb-5">
+      </p>
+
+
+      <div
+        id="guide-body"
+        class="guide-body text-[#585d76] text-sm leading-relaxed">
+      </div>
+
+
+      <div class="mt-6 flex flex-wrap gap-3">
+
+        <a
+          id="guide-cta"
+          href="#"
+          class="rounded-lg px-5 py-2.5 text-sm font-semibold text-white bg-[#4338ea] hover:bg-[#3527c9]"
+          style="display:none">
+        </a>
+
+        <button
+          data-close
+          type="button"
+          class="rounded-lg px-5 py-2.5 text-sm font-semibold bg-[#f1f2f8] hover:bg-gray-200">
+          Close
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- WORDMARK -->
+  <div class="wordmark" aria-hidden="true">
+    CAREERFLOW
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0b0f1a] text-white">
+
+    <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+      <a href="index.html" class="font-bold">
+        CareerFlow
+      </a>
+
+      <p class="text-sm text-[#9aa0c0] text-center">
+        © 2026 CareerFlow, Inc. · Privacy · Terms · Accessibility
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    (() => {
+
+      const guides = [
+
+        {
+          id: "resume-template",
+          cat: "resume",
+          icon: "📄",
+          bg: "#eef0fb",
+          title: "Fresher resume template",
+          time: "4 min read",
+          desc: "A clean one-page layout for graduates with projects, internships and coursework instead of long work history.",
+          link: {
+            text: "Use template →",
+            href: "resume.html"
+          },
+          cta: {
+            text: "Open resume builder →",
+            href: "resume.html"
+          },
+          body: `
+            <p>
+              Keep your resume to <b>one page</b> and show potential:
+              what you have learned, built and practised.
+            </p>
+
+            <h4>Section order that works</h4>
+
+            <ol>
+              <li><b>Header:</b> name, phone, professional email, city, LinkedIn, GitHub or portfolio.</li>
+              <li><b>Summary:</b> your degree, strongest skill and target role.</li>
+              <li><b>Education:</b> degree, college, year and CGPA.</li>
+              <li><b>Projects:</b> 2 to 3 projects with tools and results.</li>
+              <li><b>Internships:</b> include short internships and training.</li>
+              <li><b>Skills:</b> group technical and soft skills.</li>
+              <li><b>Achievements:</b> hackathons, certifications and leadership.</li>
+            </ol>
+
+            <h4>Formatting rules</h4>
+
+            <ul>
+              <li>Use a simple font such as Inter, Arial or Calibri.</li>
+              <li>Avoid unnecessary graphics and tables.</li>
+              <li>Keep the resume easy for recruiters and ATS systems to read.</li>
+              <li>Save the final version as PDF.</li>
+            </ul>
+
+            <div class="box">
+              <b>Example summary:</b><br>
+              B.Tech Computer Science student skilled in Python, SQL and web development,
+              with multiple academic projects and hackathon experience.
+              Looking for an entry-level software development role.
+            </div>
+          `
+        },
+
+
+        {
+          id: "project-bullets",
+          cat: "resume",
+          icon: "✍️",
+          bg: "#eef0fb",
+          title: "Writing strong project bullets",
+          time: "5 min read",
+          desc: "Turn class projects into achievements by explaining what you built, the tools you used and the result.",
+          body: `
+            <p>
+              Good project bullets explain <b>what you did, how you did it and what happened.</b>
+            </p>
+
+            <h4>The formula</h4>
+
+            <div class="box">
+              <b>Action verb + what you built + tools used + result</b>
+            </div>
+
+            <h4>Weak vs strong</h4>
+
+            <ul>
+              <li>
+                <b>Weak:</b> Worked on a job search website.
+              </li>
+
+              <li>
+                <b>Strong:</b> Built a job-search web app using HTML, CSS and JavaScript
+                with search, filtering and saved-job functionality.
+              </li>
+            </ul>
+
+            <h4>Useful action verbs</h4>
+
+            <ul>
+              <li>Built</li>
+              <li>Designed</li>
+              <li>Developed</li>
+              <li>Analysed</li>
+              <li>Automated</li>
+              <li>Implemented</li>
+              <li>Led</li>
+            </ul>
+
+            <h4>Important</h4>
+
+            <p>
+              Add numbers only when they are genuine. Never invent statistics
+              just to make a resume look stronger.
+            </p>
+          `
+        },
+
+
+        {
+          id: "interview-questions",
+          cat: "interview",
+          icon: "🎤",
+          bg: "#f2ecff",
+          title: "Common interview questions",
+          time: "8 min read",
+          desc: "Practice answers for Tell me about yourself, strengths, weaknesses and situational questions.",
+          body: `
+            <p>
+              You don't need memorised answers. Focus on a clear structure
+              and real examples.
+            </p>
+
+            <h4>1. Tell me about yourself</h4>
+
+            <p>
+              Use <b>Present → Past → Future</b>.
+              Keep your answer around 60 to 90 seconds.
+            </p>
+
+            <h4>2. Why this job?</h4>
+
+            <p>
+              Connect the role with your skills, projects and career goals.
+            </p>
+
+            <h4>3. What are your strengths?</h4>
+
+            <p>
+              Pick two strengths and give a short real example for each.
+            </p>
+
+            <h4>4. What is your weakness?</h4>
+
+            <p>
+              Choose a genuine but manageable weakness and explain how
+              you are improving it.
+            </p>
+
+            <h4>5. Tell me about a challenge</h4>
+
+            <p>Use the <b>STAR</b> structure:</p>
+
+            <ul>
+              <li><b>Situation:</b> Explain the context.</li>
+              <li><b>Task:</b> Explain what you needed to do.</li>
+              <li><b>Action:</b> Explain what you personally did.</li>
+              <li><b>Result:</b> Explain the outcome and learning.</li>
+            </ul>
+
+            <h4>6. Where do you see yourself in 3 years?</h4>
+
+            <p>
+              Focus on skills, responsibility and growth rather than only
+              mentioning a job title.
+            </p>
+
+            <h4>7. Do you have any questions?</h4>
+
+            <p>
+              Always have at least one question ready about the team,
+              role or expectations.
+            </p>
+          `
+        },
+
+
+        {
+          id: "video-checklist",
+          cat: "interview",
+          icon: "🎥",
+          bg: "#f2ecff",
+          title: "Video interview checklist",
+          time: "3 min read",
+          desc: "Camera, lighting, internet and background: everything to check before a remote interview.",
+          body: `
+            <p>
+              Run through this checklist approximately <b>30 minutes before</b>
+              your interview.
+            </p>
+
+            <h4>Technology</h4>
+
+            <ul>
+              <li>Test the meeting link.</li>
+              <li>Charge your laptop.</li>
+              <li>Keep your charger connected.</li>
+              <li>Keep mobile hotspot available as backup.</li>
+              <li>Test microphone and camera.</li>
+              <li>Close unnecessary applications.</li>
+              <li>Turn off distracting notifications.</li>
+            </ul>
+
+            <h4>Setup</h4>
+
+            <ul>
+              <li>Keep the camera at eye level.</li>
+              <li>Face the light instead of sitting with light behind you.</li>
+              <li>Use a clean and quiet background.</li>
+            </ul>
+
+            <h4>You</h4>
+
+            <ul>
+              <li>Dress appropriately.</li>
+              <li>Keep your resume nearby.</li>
+              <li>Keep water nearby.</li>
+              <li>Join around five minutes early.</li>
+              <li>Look at the camera while answering.</li>
+            </ul>
+
+            <div class="box">
+              If your connection drops, rejoin quickly and inform the recruiter.
+            </div>
+          `
+        },
+
+
+        {
+          id: "skills-employers",
+          cat: "skills",
+          icon: "💡",
+          bg: "#e6f7ee",
+          title: "Skills employers look for",
+          time: "6 min read",
+          desc: "Communication, problem solving and teamwork, and how to demonstrate each one.",
+          body: `
+            <p>
+              For entry-level roles, employers often evaluate both technical
+              knowledge and your ability to learn and work with others.
+            </p>
+
+            <h4>Core skills</h4>
+
+            <ul>
+              <li><b>Communication:</b> clear writing and speaking.</li>
+              <li><b>Problem solving:</b> explaining how you solved a difficult problem.</li>
+              <li><b>Teamwork:</b> showing your contribution to group projects.</li>
+              <li><b>Learning ability:</b> courses, certifications and self-learning.</li>
+              <li><b>Ownership:</b> taking initiative and completing tasks.</li>
+            </ul>
+
+            <h4>Technical basics</h4>
+
+            <ul>
+              <li><b>Software:</b> one programming language well, Git and databases.</li>
+              <li><b>Data:</b> SQL, Excel/Sheets and basic analytics.</li>
+              <li><b>Web:</b> HTML, CSS, JavaScript and responsive design.</li>
+            </ul>
+
+            <div class="box">
+              Connect every important skill to a project, internship,
+              certification or achievement.
+            </div>
+          `
+        },
+
+
+        {
+          id: "build-portfolio",
+          cat: "skills",
+          icon: "🧭",
+          bg: "#e6f7ee",
+          title: "Build a portfolio",
+          time: "6 min read",
+          desc: "Pick three projects, write short case studies and publish them online.",
+          link: {
+            text: "Add portfolio →",
+            href: "profile.html"
+          },
+          cta: {
+            text: "Add portfolio to profile →",
+            href: "profile.html"
+          },
+          body: `
+            <p>
+              A portfolio gives recruiters proof of what you can actually build.
+            </p>
+
+            <h4>Steps</h4>
+
+            <ol>
+              <li>Pick your three strongest projects.</li>
+              <li>Write a short case study for each.</li>
+              <li>Add screenshots, demo links or GitHub repositories.</li>
+              <li>Publish the portfolio online.</li>
+              <li>Add the portfolio link to your resume and profile.</li>
+            </ol>
+
+            <h4>Case study template</h4>
+
+            <div class="box">
+              <b>Problem:</b> What needed solving?<br><br>
+              <b>My role:</b> What did you personally do?<br><br>
+              <b>Process:</b> What steps did you take?<br><br>
+              <b>Result:</b> What changed or what did you learn?
+            </div>
+
+            <ul>
+              <li>Put your strongest project first.</li>
+              <li>Check every link before applying.</li>
+              <li>Keep descriptions short and easy to scan.</li>
+            </ul>
+          `
+        },
+
+
+        {
+          id: "offer-letter",
+          cat: "offer",
+          icon: "💰",
+          bg: "#fff3e4",
+          title: "Understanding your offer letter",
+          time: "7 min read",
+          desc: "CTC vs in-hand salary, variable pay, joining bonus and notice period explained simply.",
+          body: `
+            <p>
+              Read the complete offer letter before accepting a job.
+            </p>
+
+            <h4>Key terms</h4>
+
+            <ul>
+              <li><b>CTC:</b> Total annual cost to the company.</li>
+              <li><b>Fixed pay:</b> The guaranteed part of your compensation.</li>
+              <li><b>Variable pay:</b> Compensation that can depend on performance.</li>
+              <li><b>In-hand salary:</b> What reaches your bank after deductions.</li>
+              <li><b>PF:</b> Provident Fund contribution.</li>
+              <li><b>Joining bonus:</b> A one-time payment that may have conditions.</li>
+              <li><b>Notice period:</b> The required time before leaving a job.</li>
+              <li><b>Probation:</b> The initial evaluation period.</li>
+              <li><b>Bond:</b> A contractual commitment that may include conditions or penalties.</li>
+            </ul>
+
+            <h4>Questions to ask HR</h4>
+
+            <ul>
+              <li>What is the monthly in-hand salary?</li>
+              <li>How much is fixed and how much is variable?</li>
+              <li>Are there any repayment conditions on bonuses?</li>
+              <li>What is the work location?</li>
+              <li>Is hybrid or remote work available?</li>
+            </ul>
+
+            <div class="box">
+              Get important compensation promises in writing before accepting.
+            </div>
+          `
+        },
+
+
+        {
+          id: "negotiate-salary",
+          cat: "offer",
+          icon: "🤝",
+          bg: "#fff3e4",
+          title: "Negotiating your first salary",
+          time: "6 min read",
+          desc: "How to research the market, ask professionally and understand what is realistic.",
+          body: `
+            <p>
+              Salary negotiation can be professional and respectful,
+              even for your first job.
+            </p>
+
+            <h4>Before you negotiate</h4>
+
+            <ol>
+              <li>Research typical salary ranges for the role.</li>
+              <li>Decide your target salary.</li>
+              <li>Know the minimum you would accept.</li>
+              <li>List your strongest skills and achievements.</li>
+            </ol>
+
+            <h4>Example sentence</h4>
+
+            <div class="box">
+              Based on my research and the skills I bring to the role,
+              I was hoping for a package around ₹X. Is there flexibility
+              in the compensation?
+            </div>
+
+            <h4>If salary cannot change</h4>
+
+            <ul>
+              <li>Ask about a joining bonus.</li>
+              <li>Ask about an early salary review.</li>
+              <li>Ask about learning opportunities.</li>
+              <li>Ask about hybrid or remote flexibility.</li>
+            </ul>
+
+            <h4>Avoid</h4>
+
+            <ul>
+              <li>Making false claims about other offers.</li>
+              <li>Comparing yourself negatively with friends.</li>
+              <li>Demanding instead of discussing.</li>
+            </ul>
+          `
+        },
+
+
+        {
+          id: "cover-letter",
+          cat: "resume",
+          icon: "✉️",
+          bg: "#eef0fb",
+          title: "Cover letter starter",
+          time: "4 min read",
+          desc: "A simple cover letter structure that you can customise for each application.",
+          body: `
+            <p>
+              Keep your cover letter short, specific and relevant to the role.
+            </p>
+
+            <div class="box">
+              Dear Hiring Manager,<br><br>
+
+              I am applying for the [Job Title] position at [Company].
+              I am currently pursuing/completed my [Degree] from [College]
+              and I am particularly interested in this opportunity because
+              [specific reason].<br><br>
+
+              During my studies, I worked on [Project/Internship], where I
+              [what you did]. This helped me develop [Skill 1] and [Skill 2],
+              which align with the requirements of this role.<br><br>
+
+              I would welcome the opportunity to discuss how I can contribute
+              to your team.<br><br>
+
+              Thank you for your time.<br><br>
+
+              Sincerely,<br>
+              [Your Name]
+            </div>
+
+            <h4>Checklist</h4>
+
+            <ul>
+              <li>Customise it for the company.</li>
+              <li>Mention skills from the job description.</li>
+              <li>Keep it concise.</li>
+              <li>Proofread before sending.</li>
+            </ul>
+          `
+        }
+
+      ];
+
+
+      const categoryLabels = {
+        resume: "Resume",
+        interview: "Interviews",
+        skills: "Skills",
+        offer: "Offers"
+      };
+
+
+      const grid = document.getElementById("resource-grid");
+      const modal = document.getElementById("guide-modal");
+
+      let lastFocusedElement = null;
+
+
+      // CREATE CARDS
+      function renderCards() {
+
+        grid.innerHTML = guides.map((guide) => {
+
+          const action = guide.link
+            ? `
+              <a
+                href="${guide.link.href}"
+                class="text-sm font-semibold text-[#4338ea] hover:text-[#3527c9]">
+                ${guide.link.text}
+              </a>
+            `
+            : `
+              <span class="text-xs text-[#8a8fa8]">
+                ${guide.time}
+              </span>
+            `;
+
+
+          return `
+            <article
+              data-guide="${guide.id}"
+              data-cat="${guide.cat}"
+              tabindex="0"
+              role="button"
+              aria-label="Open ${guide.title}"
+              class="card p-6 flex flex-col">
+
+              <span
+                class="w-10 h-10 rounded-xl flex items-center justify-center text-lg mb-4"
+                style="background:${guide.bg}">
+                ${guide.icon}
+              </span>
+
+              <h3 class="font-semibold text-lg mb-1">
+                ${guide.title}
+              </h3>
+
+              <p class="text-sm text-[#585d76] mb-4 flex-1">
+                ${guide.desc}
+              </p>
+
+              <div class="flex items-center justify-between gap-3">
+
+                <span class="tag">
+                  ${categoryLabels[guide.cat]}
+                </span>
+
+                ${action}
+
+              </div>
+
+            </article>
+          `;
+
+        }).join("");
+
+      }
+
+
+      // OPEN GUIDE
+      function openGuide(id) {
+
+        const guide = guides.find((item) => item.id === id);
+
+        if (!guide) return;
+
+        lastFocusedElement = document.activeElement;
+
+        document.getElementById("guide-title").textContent = guide.title;
+        document.getElementById("guide-tag").textContent = categoryLabels[guide.cat];
+        document.getElementById("guide-meta").textContent = guide.time;
+        document.getElementById("guide-body").innerHTML = guide.body;
+
+
+        const cta = document.getElementById("guide-cta");
+
+        if (guide.cta) {
+
+          cta.textContent = guide.cta.text;
+          cta.href = guide.cta.href;
+          cta.style.display = "inline-block";
+
+        } else {
+
+          cta.style.display = "none";
+
+        }
+
+
+        modal.classList.add("open");
+
+        document.body.style.overflow = "hidden";
+
+        document.getElementById("close-x").focus();
+
+      }
+
+
+      // CLOSE GUIDE
+      function closeGuide() {
+
+        modal.classList.remove("open");
+
+        document.body.style.overflow = "";
+
+        if (lastFocusedElement) {
+          lastFocusedElement.focus();
+        }
+
+      }
+
+
+      // CARD CLICK
+      document.addEventListener("click", (event) => {
+
+        const closeButton = event.target.closest("[data-close]");
+
+        if (closeButton) {
+          closeGuide();
+          return;
+        }
+
+
+        const card = event.target.closest("article[data-guide]");
+
+        if (!card) return;
+
+
+        // Don't open popup if clicking the actual link.
+        if (event.target.closest("a")) return;
+
+        openGuide(card.dataset.guide);
+
+      });
+
+
+      // KEYBOARD
+      document.addEventListener("keydown", (event) => {
+
+        if (
+          event.key === "Escape" &&
+          modal.classList.contains("open")
+        ) {
+          closeGuide();
+          return;
+        }
+
+
+        const activeCard = event.target.closest?.("article[data-guide]");
+
+        if (
+          activeCard &&
+          (event.key === "Enter" || event.key === " ")
+        ) {
+
+          event.preventDefault();
+
+          openGuide(activeCard.dataset.guide);
+
+        }
+
+      });
+
+
+      // FILTERS
+      document.querySelectorAll(".chip").forEach((chip) => {
+
+        chip.addEventListener("click", () => {
+
+          const category = chip.dataset.cat;
+
+
+          document.querySelectorAll(".chip").forEach((item) => {
+            item.classList.remove("on");
+          });
+
+          chip.classList.add("on");
+
+
+          document.querySelectorAll("article[data-guide]").forEach((card) => {
+
+            if (
+              category === "all" ||
+              card.dataset.cat === category
+            ) {
+
+              card.style.display = "";
+
+            } else {
+
+              card.style.display = "none";
+
+            }
+
+          });
+
+        });
+
+      });
+
+
+      // MOBILE MENU
+      const menuButton = document.getElementById("menu-btn");
+      const mobileNav = document.getElementById("mobile-nav");
+
+
+      menuButton.addEventListener("click", () => {
+
+        const isOpen = mobileNav.classList.toggle("open");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+      });
+
+
+      // CLOSE MOBILE MENU AFTER NAVIGATION
+      mobileNav.querySelectorAll("a").forEach((link) => {
+
+        link.addEventListener("click", () => {
+
+          mobileNav.classList.remove("open");
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        });
+
+      });
+
+
+      // INITIAL RENDER
+      renderCards();
+
+    })();
+
+  </script>
+
+  <script src="js/auth.js"></script>
+  <script src="js/motion.js"></script>
+</body>
+</html>

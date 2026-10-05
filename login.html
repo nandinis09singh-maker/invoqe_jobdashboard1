@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign in · CareerFlow</title>
+<link rel="stylesheet" href="css/style.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+</head>
+<body class="text-[#0b0f1a]">
+<a href="#main" class="skip-link sr-only">Skip to content</a>
+
+<header class="bg-white border-b border-[#e7e9f0]">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 font-bold text-lg">
+      <span class="w-8 h-8 rounded-lg brand-gradient flex items-center justify-center text-white">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-4-4M12 19h8"/></svg>
+      </span>
+      CareerFlow
+    </a>
+    <p class="text-sm text-[#585d76]">New to CareerFlow?
+      <a href="signup.html" class="btn-primary rounded-lg px-4 py-2 ml-2 text-sm font-semibold">Create account</a>
+    </p>
+  </div>
+</header>
+
+<main id="main" class="max-w-6xl mx-auto px-6 py-14 grid lg:grid-cols-2 gap-12 items-center">
+  <!-- Form (submit is handled by js/auth.js) -->
+  <form id="loginForm">
+    <p class="text-xs font-semibold tracking-wide text-[#4338ea] mb-2">WELCOME BACK</p>
+    <h1 class="text-4xl font-extrabold mb-3">Your next move starts here.</h1>
+    <p class="text-[#585d76] mb-7">Sign in to see new matches, track applications, and keep your profile ready.</p>
+
+    <div class="grid grid-cols-2 gap-3 mb-5">
+      <button type="button" class="btn-secondary rounded-lg py-2.5 text-sm font-medium flex items-center justify-center gap-2">🔍 Google</button>
+      <button type="button" class="btn-secondary rounded-lg py-2.5 text-sm font-medium flex items-center justify-center gap-2">💼 LinkedIn</button>
+    </div>
+    <div class="flex items-center gap-3 mb-5 text-xs text-[#8a8fa8]">
+      <span class="flex-1 h-px bg-[#e7e9f0]"></span>or<span class="flex-1 h-px bg-[#e7e9f0]"></span>
+    </div>
+
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-1" for="email">Email address</label>
+        <input id="email" type="email" required value="" class="w-full border border-[#e7e9f0] rounded-lg px-4 py-2.5 text-sm outline-none focus:border-[#4338ea]" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-1" for="password">Password</label>
+        <div class="relative">
+          <input id="password" type="password" required value="password123" class="w-full border border-[#e7e9f0] rounded-lg px-4 py-2.5 text-sm outline-none focus:border-[#4338ea]" />
+          <button type="button" data-toggle-password="#password" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-medium text-[#585d76]">Show</button>
+        </div>
+      </div>
+      <div class="flex items-center justify-between text-sm">
+        <label class="flex items-center gap-2"><input type="checkbox" checked /> Remember me</label>
+        <a href="#" class="text-[#4338ea] font-medium">Forgot password?</a>
+      </div>
+      <button type="submit" class="btn-primary w-full rounded-lg py-3 text-sm font-semibold flex items-center justify-center gap-2">→ Sign in to CareerFlow</button>
+    </div>
+  </form>
+
+  <!-- Preview panel -->
+  <div class="rounded-2xl p-8 text-white" style="background:linear-gradient(160deg,#0b0f1a,#181c30)">
+    <span class="tag bg-white/10 text-white mb-4">YOUR WEEK AT A GLANCE</span>
+    <div class="flex items-center justify-between mb-5">
+      <h2 class="text-2xl font-bold">Keep your search moving.</h2>
+      <span class="text-xs text-[#8be8b0] flex items-center gap-1">● Updated today</span>
+    </div>
+    <div class="grid grid-cols-3 gap-3 mb-6">
+      <div class="bg-white/5 rounded-xl p-4">
+        <p class="text-2xl font-bold">128</p>
+        <p class="text-xs text-[#9aa0c0]">New matches</p>
+        <p class="text-xs text-[#8be8b0]">+18 this week</p>
+      </div>
+      <div class="bg-white/5 rounded-xl p-4">
+        <p class="text-2xl font-bold">9</p>
+        <p class="text-xs text-[#9aa0c0]">Saved jobs</p>
+        <p class="text-xs text-[#b7bad4]">2 close soon</p>
+      </div>
+      <div class="bg-white/5 rounded-xl p-4">
+        <p class="text-2xl font-bold">5</p>
+        <p class="text-xs text-[#9aa0c0]">Applications</p>
+        <p class="text-xs text-[#8be8b0]">1 interview</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-xl p-5 text-[#0b0f1a] mb-5">
+      <div class="flex items-center justify-between mb-2">
+        <div class="flex items-center gap-3">
+          <span class="avatar w-10 h-10" style="background:#4338ea">NL</span>
+          <div>
+            <p class="font-semibold">Product Designer</p>
+            <p class="text-xs text-[#585d76]">Northstar Labs · Bengaluru</p>
+          </div>
+        </div>
+        <span class="tag bg-[#e6f7ee] text-[#16a34a]">INTERVIEW</span>
+      </div>
+      <p class="text-xs text-[#585d76] mb-3">📅 29 Sep · 11:30 AM &nbsp; 🎥 Google Meet</p>
+      <button class="w-full bg-[#f4f5fa] rounded-lg py-2 text-sm font-semibold flex items-center justify-center gap-1">✦ Prepare for interview</button>
+    </div>
+    <p class="text-sm italic text-[#b7bad4]">"CareerFlow helped me focus on roles where my coursework and projects actually mattered." — Nisha, 2025 graduate</p>
+  </div>
+</main>
+
+<!-- Wordmark banner -->
+<div id="wordmark" style="height:220px" aria-hidden="true"></div>
+
+<script src="js/main.js"></script>
+<script src="js/motion.js"></script>
+    <script src="js/auth.js"></script>
+<script src="js/vector-wordmark.js"></script>
+<script>
+  VectorWordmark(document.getElementById("wordmark"), {
+    text: "CAREERFLOW",
+    fontSize: 120,
+    labels: false
+  });
+</script>
+</body>
+</html>

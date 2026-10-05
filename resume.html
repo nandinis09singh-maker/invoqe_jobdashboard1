@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Studio · CareerFlow</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #f7f7fb;
+      color: #111827;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      height: 76px;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      padding: 0 64px;
+      justify-content: space-between;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 42px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: #4936e8;
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 38px;
+      color: #374151;
+    }
+
+    nav a {
+      padding: 28px 0;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #4338ea;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .notification {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #f3f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profile-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #111827;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .profile-name {
+      font-weight: 700;
+    }
+
+    .profile-role {
+      color: #4338ea;
+      font-size: 13px;
+    }
+
+    /* ================= MAIN ================= */
+
+    main {
+      max-width: 1550px;
+      margin: auto;
+      padding: 42px 64px 70px;
+    }
+
+    .page-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      color: #4338ea;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .4px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 38px;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      color: #686f83;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .heading-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    /* ================= BUTTONS ================= */
+
+    .btn {
+      border: none;
+      padding: 13px 20px;
+      border-radius: 9px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: #4936e8;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #3828c9;
+    }
+
+    .btn-light {
+      background: white;
+      border: 1px solid #e0e3eb;
+      color: #242938;
+    }
+
+    .btn-light:hover {
+      background: #f5f5fa;
+    }
+
+    /* ================= WORKSPACE ================= */
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ================= SIDEBAR ================= */
+
+    .sidebar-card {
+      background: white;
+      border: 1px solid #e2e5ec;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+
+    .sidebar-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .sidebar-title h2 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .add-btn {
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 9px;
+      background: #4936e8;
+      color: white;
+      font-size: 24px;
+    }
+
+    .resume-item {
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    .resume-item.primary {
+      border: 2px solid #4936e8;
+      background: #fafaff;
+    }
+
+    .resume-item-title {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .resume-meta {
+      color: #858b9d;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .primary-label {
+      color: #4338ea;
+      font-weight: 700;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .resume-use {
+      color: #6c7285;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .set-primary {
+      color: #4338ea;
+      font-size: 13px;
+      font-weight: 600;
+      margin: 5px 0 20px 15px;
+    }
+
+    .upload-box {
+      height: 150px;
+      border: 1px dashed #d2d6e1;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #7d8498;
+      text-align: center;
+    }
+
+    .upload-icon {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .upload-box small {
+      margin-top: 5px;
+      font-size: 11px;
+    }
+
+    .completion {
+      font-size: 14px;
+    }
+
+    .progress {
+      height: 8px;
+      background: #eceef4;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .progress-bar {
+      width: 82%;
+      height: 100%;
+      background: #4936e8;
+    }
+
+    .tips {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .tips li {
+      margin: 13px 0;
+      color: #62697c;
+      font-size: 14px;
+    }
+
+    .tips li::before {
+      content: "✓";
+      color: #16a34a;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .action-button {
+      width: 100%;
+      background: white;
+      border: 1px solid #e0e3ea;
+      border-radius: 9px;
+      padding: 13px;
+      margin-bottom: 10px;
+      text-align: left;
+      color: #303645;
+      font-weight: 500;
+    }
+
+    .action-button:hover {
+      background: #f7f7fa;
+    }
+
+    .remove {
+      color: #dc2626;
+    }
+
+    /* ================= RESUME AREA ================= */
+
+    .resume-area {
+      background: white;
+      border-radius: 14px;
+      border: 1px solid #e1e4eb;
+      overflow: hidden;
+    }
+
+    .resume-toolbar {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-bottom: 1px solid #eceef3;
+    }
+
+    .resume-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .resume-title-icon {
+      font-size: 22px;
+    }
+
+    .resume-title h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .saved {
+      color: #16a34a;
+      font-size: 13px;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .toolbar-link {
+      padding: 10px 14px;
+      color: #303646;
+      border-radius: 8px;
+    }
+
+    .toolbar-link:hover {
+      background: #f4f5f8;
+    }
+
+    /* ================= RESUME PAPER ================= */
+
+    .paper {
+      background: white;
+      padding: 48px 55px 65px;
+      min-height: 900px;
+    }
+
+    .resume-header {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .resume-header h1 {
+      font-size: 29px;
+      letter-spacing: .5px;
+      margin-bottom: 5px;
+    }
+
+    .resume-position {
+      color: #4338ea;
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 7px;
+    }
+
+    .contact {
+      color: #656b7b;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .links {
+      color: #4338ea;
+      font-size: 14px;
+    }
+
+    /* ================= SECTIONS ================= */
+
+    .resume-section {
+      margin-top: 28px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid #111827;
+      padding-bottom: 5px;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-size: 18px;
+      margin: 0;
+      font-weight: 800;
+    }
+
+    .edit {
+      margin-left: auto;
+      color: #4338ea;
+      font-size: 14px;
+    }
+
+    .resume-text {
+      color: #616879;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .education-row,
+    .experience-row,
+    .project-row,
+    .cert-row {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .row-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .row-title {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .date {
+      color: #7b8192;
+      white-space: nowrap;
+    }
+
+    .organization {
+      color: #6b7181;
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    ul.resume-bullets {
+      margin: 8px 0 0 20px;
+      padding: 0;
+      color: #626979;
+    }
+
+    ul.resume-bullets li {
+      margin-bottom: 6px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill {
+      background: #f1f2f7;
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-size: 13px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      height: 95px;
+      background: #090b12;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 64px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 700;
+    }
+
+    .footer-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      background: #4936e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-text {
+      color: #9da3b5;
+      font-size: 13px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 1000px) {
+      header {
+        padding: 0 25px;
+      }
+
+      main {
+        padding: 35px 25px;
+      }
+
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        display: none;
+      }
+
+      .profile-name,
+      .profile-role {
+        display: none;
+      }
+
+      .page-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .heading-actions {
+        width: 100%;
+      }
+
+      .heading-actions .btn {
+        flex: 1;
+        justify-content: center;
+      }
+
+      .sidebar {
+        display: block;
+      }
+
+      .paper {
+        padding: 30px 20px;
+      }
+
+      .resume-toolbar {
+        padding: 0 15px;
+      }
+
+      .toolbar-link {
+        display: none;
+      }
+
+      footer {
+        padding: 0 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+  <div class="header-left">
+
+    <a href="index.html" class="logo">
+      <span class="logo-icon">›_</span>
+      CareerFlow
+    </a>
+
+    <nav>
+      <a href="index.html">Find jobs</a>
+      <a href="saved-jobs.html">Saved jobs</a>
+      <a href="applications.html">Applications</a>
+      <a href="#">Career resources</a>
+    </nav>
+
+  </div>
+
+  <div class="header-right">
+
+    <div class="notification">♧</div>
+
+    <div class="profile">
+
+      <div class="profile-circle">
+        AM
+      </div>
+
+      <div>
+        <div class="profile-name">Aarav Mehta</div>
+        <div class="profile-role">Resumes</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+  <!-- PAGE TITLE -->
+
+  <div class="page-heading">
+
+    <div>
+      <div class="eyebrow">RESUME STUDIO</div>
+
+      <h1>Build a resume recruiters can scan.</h1>
+
+      <p class="subtitle">
+        Manage uploaded files or refine your structured CareerFlow resume.
+      </p>
+    </div>
+
+    <div class="heading-actions">
+
+      <button class="btn btn-light">
+        ↑ Upload resume
+      </button>
+
+      <button class="btn btn-primary">
+        ↓ Download PDF
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= WORKSPACE ================= -->
+
+  <div class="workspace">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <!-- Uploaded resumes -->
+
+      <div class="sidebar-card">
+
+        <div class="sidebar-title">
+
+          <div>
+            <h2>Uploaded resumes</h2>
+            <div class="resume-meta">2 of 5 files</div>
+          </div>
+
+          <button class="add-btn">+</button>
+
+        </div>
+
+
+        <div class="resume-item primary">
+
+          <div class="resume-item-title">
+            📄 Aarav_Mehta_Resume.pdf
+          </div>
+
+          <div class="resume-meta">
+            PDF · 482 KB · Updated today
+          </div>
+
+          <div class="primary-label">
+            PRIMARY RESUME
+          </div>
+
+          <div class="resume-use">
+            Used for Easy Apply
+          </div>
+
+        </div>
+
+
+        <div class="resume-item">
+
+          <div class="resume-item-title">
+            📄 Aarav_Mehta_Data_Roles.pdf
+          </div>
+
+          <div class="resume-meta">
+            PDF · 308 KB · 12 Sep 2026
+          </div>
+
+        </div>
+
+        <div class="set-primary">
+          Set as primary
+        </div>
+
+
+        <div class="upload-box">
+
+          <div class="upload-icon">☁</div>
+
+          <div>Drop PDF or DOCX here</div>
+
+          <small>Maximum file size 5 MB</small>
+
+        </div>
+
+      </div>
+
+
+      <!-- Resume completeness -->
+
+      <div class="sidebar-card">
+
+        <h2>Resume completeness</h2>
+
+        <div class="completion">
+          Your resume is 82% complete
+        </div>
+
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+
+        <ul class="tips">
+
+          <li>Contact details complete</li>
+
+          <li>Bullet points show scope, speed, or impact</li>
+
+          <li>ATS-friendly formatting — clear headings, no complex columns</li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Primary actions -->
+
+      <div class="sidebar-card">
+
+        <h2>Primary resume actions</h2>
+
+        <br>
+
+        <button class="action-button">
+          🔄 Replace primary file
+        </button>
+
+        <button class="action-button">
+          ↓ Download current PDF
+        </button>
+
+        <button class="action-button remove">
+          🗑 Remove resume
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- ================= RESUME PREVIEW ================= -->
+
+    <section class="resume-area">
+
+      <!-- Toolbar -->
+
+      <div class="resume-toolbar">
+
+        <div class="resume-title">
+
+          <span class="resume-title-icon">📝</span>
+
+          <div>
+            <h2>Aarav Mehta — Graduate Software Engineer</h2>
+            <div class="saved">
+              All changes saved · Primary resume
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="toolbar-actions">
+
+          <button class="toolbar-link">
+            👁 Preview
+          </button>
+
+          <button class="toolbar-link">
+            ▦ Template
+          </button>
+
+          <button class="btn btn-primary">
+            ↓ Download
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- Resume paper -->
+
+      <div class="paper">
+
+        <!-- Resume heading -->
+
+        <div class="resume-header">
+
+          <h1>AARAV MEHTA</h1>
+
+          <div class="resume-position">
+            GRADUATE SOFTWARE ENGINEER
+          </div>
+
+          <div class="contact">
+            Bengaluru, Karnataka · +91 98765 42108 ·
+            aarav.mehta@gmail.com
+          </div>
+
+          <div class="links">
+            linkedin.com/in/aaravmehta ·
+            github.com/aaravmehta ·
+            aaravbuilds.dev
+          </div>
+
+        </div>
+
+
+        <!-- Professional summary -->
+
+        <div class="resume-section">
+
+          <div class="section-heading">
+            <h2>PROFESSIONAL SUMMARY</h2>
+            <span class="edit">✎</span>
+          </div>
+
+          <p class="resume-text">
+            Computer Science graduate with hands-on experience building
+            responsive web products in React, Node.js, and PostgreSQL.
+            Strong foundation in data structures and API design, with
+            internship experience shipping merchant analytics features
+            for a leading Indian fintech.
+          </p>
+
+        </div>
+
+
+        <!-- Education -->
+
+        <div class="resume-section">
+
+          <div class="section-heading">
+            <h2>EDUCATION</h2>
+            <span class="edit">✎</span>
+          </div>
+
+          <div class="education-row">
+
+            <div class="row-top">
+
+              <div>
+                <div class="row-title">
+                  Bachelor of Technology — Computer Science & Engineering
+                </div>
+
+                <div class="organization">
+                  PES University, Bengaluru · CGPA 8.4/10
+                </div>
+              </div>
+
+              <div class="date">
+                2022–2026
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Projects -->
+
+        <div class="resume-section">
+
+          <div class="section-heading">
+            <h2>PROJECTS</h2>
+            <span class="edit">✎</span>
+          </div>
+
+
+          <div class="project-row">
+
+            <div class="row-top">
+
+              <div>
+                <div class="row-title">
+                  CampusConnect — Student Opportunity Platform
+                </div>
+
+                <div class="organization">
+                  React, Node.js, PostgreSQL · github.com/aaravmehta/campusconnect
+                </div>
+              </div>
+
+              <div class="date">
+                2025
+              </div>
+
+            </div>
+
+            <ul class="resume-bullets">
+
+              <li>
+                Built a full-stack discovery platform used by 320 students
+                to find campus clubs, hackathons, and internships.
+              </li>
+
+              <li>
+                Designed role-based admin tools and reduced event publishing
+                time from 15 minutes to under 4 minutes.
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div class="project-row">
+
+            <div class="row-top">
+
+              <div>
+                <div class="row-title">
+                  SpendSense — Personal Finance Dashboard
+                </div>
+
+                <div class="organization">
+                  React, TypeScript, Chart.js
+                </div>
+
+              </div>
+
+              <div class="date">
+                2024
+              </div>
+
+            </div>
+
+            <ul class="resume-bullets">
+
+              <li>
+                Created an accessible budgeting dashboard with category
+                trends, monthly goals, and CSV import.
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+
+        <!-- Internship -->
+
+        <div class="resume-section">
+
+          <div class="section-heading">
+            <h2>INTERNSHIP EXPERIENCE</h2>
+            <span class="edit">✎</span>
+          </div>
+
+          <div class="experience-row">
+
+            <div class="row-top">
+
+              <div>
+
+                <div class="row-title">
+                  Software Engineering Intern
+                </div>
+
+                <div class="organization">
+                  Razorpay · Bengaluru · Hybrid
+                </div>
+
+              </div>
+
+              <div class="date">
+                May–Jul 2025
+              </div>
+
+            </div>
+
+            <ul class="resume-bullets">
+
+              <li>
+                Developed reusable React components for a merchant analytics
+                workflow used by 2,000+ beta merchants.
+              </li>
+
+              <li>
+                Improved API response handling and reduced dashboard load
+                time by 18% in collaboration with platform engineers.
+              </li>
+
+              <li>
+                Wrote unit tests and documentation that increased feature
+                test coverage from 68% to 84%.
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+
+        <!-- Certifications -->
+
+        <div class="resume-section">
+
+          <div class="section-heading">
+            <h2>CERTIFICATIONS</h2>
+            <span class="edit">✎</span>
+          </div>
+
+          <div class="cert-row">
+
+            <div class="row-top">
+
+              <div class="row-title">
+                Google Cloud Digital Leader
+              </div>
+
+              <div class="date">
+                Google Cloud · 2025
+              </div>
+
+            </div>
+
+          </div>
+
+          <a href="#" style="color:#4338ea;font-weight:600;">
+            + Add another certification
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="footer-logo">
+
+    <span class="footer-icon">C</span>
+
+    CareerFlow
+
+  </div>
+
+  <div class="footer-text">
+    © 2026 CareerFlow, Inc. · Privacy · Terms · Accessibility
+  </div>
+
+</footer>
+
+
+</body>
+</html>
